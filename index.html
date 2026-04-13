@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Thanya Ramanathan — Data Scientist & AI Researcher</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #f7f5f0;
+      --surface: #ffffff;
+      --ink: #1a1916;
+      --ink-2: #5a5850;
+      --ink-3: #9a9890;
+      --accent: #c8522a;
+      --accent-light: #f0e8e2;
+      --accent-mid: #e8a080;
+      --border: rgba(26,25,22,0.1);
+      --border-strong: rgba(26,25,22,0.2);
+      --serif: 'DM Serif Display', Georgia, serif;
+      --sans: 'DM Sans', system-ui, sans-serif;
+      --radius: 12px;
+      --radius-sm: 6px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--sans);
+      background: var(--bg);
+      color: var(--ink);
+      font-size: 15px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 2.5rem;
+      height: 56px;
+      background: rgba(247,245,240,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-family: var(--serif);
+      font-size: 1.15rem;
+      color: var(--ink);
+      text-decoration: none;
+      letter-spacing: -0.01em;
+    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--ink-2);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--accent); }
+
+    /* ── LAYOUT ── */
+    .container { max-width: 1080px; margin: 0 auto; padding: 0 2.5rem; }
+
+    /* ── HERO ── */
+    #hero {
+      padding: 10rem 0 6rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      border-bottom: 1px solid var(--border);
+    }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 0.75rem; font-weight: 500; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--accent);
+      margin-bottom: 1.25rem;
+    }
+    .hero-eyebrow::before {
+      content: ''; display: block;
+      width: 24px; height: 1px; background: var(--accent);
+    }
+    .hero-name {
+      font-family: var(--serif);
+      font-size: clamp(2.8rem, 5vw, 4.2rem);
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      margin-bottom: 1.5rem;
+    }
+    .hero-name em {
+      font-style: italic;
+      color: var(--accent);
+    }
+    .hero-bio {
+      color: var(--ink-2);
+      font-size: 1rem;
+      line-height: 1.75;
+      max-width: 440px;
+      margin-bottom: 2rem;
+    }
+    .hero-cta { display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 0.6rem 1.4rem;
+      border-radius: 100px;
+      font-size: 0.82rem; font-weight: 500; letter-spacing: 0.04em;
+      text-decoration: none;
+      transition: all 0.2s;
+      cursor: pointer; border: none;
+    }
+    .btn-primary {
+      background: var(--accent); color: #fff;
+    }
+    .btn-primary:hover { background: #a84020; transform: translateY(-1px); }
+    .btn-outline {
+      background: transparent;
+      border: 1px solid var(--border-strong);
+      color: var(--ink);
+    }
+    .btn-outline:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-1px); }
+
+    .hero-stats {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .stat-cell {
+      background: var(--surface);
+      padding: 1.5rem;
+    }
+    .stat-num {
+      font-family: var(--serif);
+      font-size: 2.2rem;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .stat-label { font-size: 0.78rem; color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.06em; }
+
+    /* ── SECTION SHARED ── */
+    section { padding: 5rem 0; border-bottom: 1px solid var(--border); }
+    .section-header { display: flex; align-items: baseline; gap: 1rem; margin-bottom: 3rem; }
+    .section-num {
+      font-family: var(--serif);
+      font-size: 0.95rem;
+      color: var(--accent);
+      font-style: italic;
+    }
+    .section-title {
+      font-family: var(--serif);
+      font-size: 1.9rem;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+    }
+
+    /* ── ABOUT ── */
+    #about .about-grid {
+      display: grid; grid-template-columns: 2fr 1fr; gap: 4rem; align-items: start;
+    }
+    .about-text p { color: var(--ink-2); margin-bottom: 1rem; font-size: 0.97rem; }
+    .about-text p:last-child { margin-bottom: 0; }
+
+    .interests { margin-top: 0; }
+    .interests h3 {
+      font-size: 0.72rem; font-weight: 500; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--ink-3); margin-bottom: 1rem;
+    }
+    .interest-list { list-style: none; }
+    .interest-list li {
+      font-size: 0.88rem; color: var(--ink-2); padding: 0.45rem 0;
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; gap: 8px;
+    }
+    .interest-list li:last-child { border-bottom: none; }
+    .interest-list li::before { content: '→'; color: var(--accent); font-size: 0.75rem; }
+
+    /* ── BACKGROUND ── */
+    #background .timeline { position: relative; }
+    .timeline-item {
+      display: grid; grid-template-columns: 160px 1fr; gap: 2rem;
+      padding: 2rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .timeline-item:last-child { border-bottom: none; }
+    .timeline-date {
+      font-size: 0.78rem; color: var(--ink-3);
+      font-weight: 400; padding-top: 3px;
+    }
+    .timeline-content {}
+    .timeline-org {
+      font-size: 0.72rem; font-weight: 500; letter-spacing: 0.06em;
+      text-transform: uppercase; color: var(--accent); margin-bottom: 4px;
+    }
+    .timeline-role {
+      font-family: var(--serif); font-size: 1.2rem; color: var(--ink);
+      margin-bottom: 8px; letter-spacing: -0.01em;
+    }
+    .timeline-desc { font-size: 0.88rem; color: var(--ink-2); line-height: 1.7; }
+    .timeline-tag {
+      display: inline-block; margin-top: 10px; margin-right: 6px;
+      padding: 2px 10px; border-radius: 100px;
+      font-size: 0.72rem; font-weight: 500;
+      background: var(--accent-light); color: var(--accent);
+    }
+
+    /* ── SKILLS ── */
+    #expertise .skills-layout {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;
+    }
+    .skill-group h3 {
+      font-size: 0.72rem; font-weight: 500; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--ink-3); margin-bottom: 1rem;
+    }
+    .skill-pills { display: flex; flex-wrap: wrap; gap: 8px; }
+    .pill {
+      padding: 5px 14px; border-radius: 100px;
+      font-size: 0.8rem; font-weight: 400;
+      border: 1px solid var(--border);
+      color: var(--ink-2); background: var(--surface);
+      transition: all 0.18s;
+    }
+    .pill:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-light); }
+    .pill.accent { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+    /* ── PROJECTS ── */
+    #work .projects-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;
+    }
+    .project-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+      display: flex; flex-direction: column;
+      text-decoration: none; color: inherit;
+    }
+    .project-card:hover {
+      border-color: var(--accent-mid);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 40px rgba(200,82,42,0.1);
+    }
+    .project-img {
+      width: 100%; height: 180px; object-fit: cover;
+      border-bottom: 1px solid var(--border);
+      background: var(--accent-light);
+    }
+    .project-body { padding: 1.4rem; flex: 1; display: flex; flex-direction: column; }
+    .project-type {
+      font-size: 0.7rem; font-weight: 500; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--accent); margin-bottom: 6px;
+    }
+    .project-title {
+      font-family: var(--serif);
+      font-size: 1.05rem; color: var(--ink);
+      margin-bottom: 8px; line-height: 1.35; letter-spacing: -0.01em;
+    }
+    .project-desc {
+      font-size: 0.83rem; color: var(--ink-2); line-height: 1.65;
+      flex: 1; margin-bottom: 12px;
+    }
+    .project-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: auto; }
+    .project-tag {
+      font-size: 0.7rem; padding: 2px 8px; border-radius: 100px;
+      background: var(--bg); color: var(--ink-3);
+      border: 1px solid var(--border);
+    }
+    .project-link {
+      display: inline-flex; align-items: center; gap: 4px;
+      font-size: 0.75rem; font-weight: 500; color: var(--accent);
+      margin-top: 12px; text-decoration: none; letter-spacing: 0.02em;
+    }
+    .project-link:hover { text-decoration: underline; }
+    .project-link svg { transition: transform 0.15s; }
+    .project-card:hover .project-link svg { transform: translateX(3px); }
+
+    /* ── CONTACT ── */
+    #contact .contact-layout {
+      display: grid; grid-template-columns: 1.2fr 1fr; gap: 4rem; align-items: start;
+    }
+    .contact-intro {
+      font-family: var(--serif);
+      font-size: 1.7rem; color: var(--ink);
+      letter-spacing: -0.02em; line-height: 1.25; margin-bottom: 1.5rem;
+    }
+    .contact-intro em { font-style: italic; color: var(--accent); }
+    .contact-sub { font-size: 0.9rem; color: var(--ink-2); margin-bottom: 2rem; }
+    .contact-links { list-style: none; }
+    .contact-links li {
+      padding: 0.75rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .contact-links li:first-child { border-top: 1px solid var(--border); }
+    .contact-links a {
+      display: flex; align-items: center; justify-content: space-between;
+      text-decoration: none; color: var(--ink);
+      font-size: 0.9rem; transition: color 0.18s;
+    }
+    .contact-links a:hover { color: var(--accent); }
+    .contact-links .contact-label { font-size: 0.72rem; color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.06em; }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 2rem 0;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .footer-note { font-size: 0.78rem; color: var(--ink-3); }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .fade-up { animation: fadeUp 0.6s ease both; }
+    .fade-up-1 { animation-delay: 0.1s; }
+    .fade-up-2 { animation-delay: 0.22s; }
+    .fade-up-3 { animation-delay: 0.34s; }
+    .fade-up-4 { animation-delay: 0.46s; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav { padding: 0 1.25rem; }
+      .nav-links { gap: 1.2rem; }
+      .container { padding: 0 1.25rem; }
+      #hero { grid-template-columns: 1fr; gap: 2.5rem; padding: 7rem 0 4rem; }
+      #about .about-grid,
+      .timeline-item,
+      #contact .contact-layout,
+      #expertise .skills-layout,
+      #work .projects-grid { grid-template-columns: 1fr; }
+      .timeline-item { grid-template-columns: 1fr; gap: 0.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-logo">Thanya R.</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#background">Background</a></li>
+    <li><a href="#expertise">Skills</a></li>
+    <li><a href="#work">Work</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="container">
+  <section id="hero">
+    <div>
+      <p class="hero-eyebrow fade-up">Data Scientist · AI Researcher</p>
+      <h1 class="hero-name fade-up fade-up-1">
+        Thanya<br><em>Ramanathan</em>
+      </h1>
+      <p class="hero-bio fade-up fade-up-2">
+        Mechanical engineer turned AI practitioner. I build production-ready systems
+        at the intersection of NLP, generative models, and computer vision — currently
+        as a Data Scientist at Tesco. MS AI from NTU Singapore.
+      </p>
+      <div class="hero-cta fade-up fade-up-3">
+        <a href="https://drive.google.com/file/d/1SC3inpwRWXU9mpKlWTAOZ647MQekJyFM/view?usp=sharing" class="btn btn-primary" target="_blank">
+          View Résumé ↗
+        </a>
+        <a href="#work" class="btn btn-outline">See Projects</a>
+      </div>
+    </div>
+    <div class="hero-stats fade-up fade-up-4">
+      <div class="stat-cell">
+        <div class="stat-num">2</div>
+        <div class="stat-label">IEEE Publications</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num">4+</div>
+        <div class="stat-label">AI Domains</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num">6</div>
+        <div class="stat-label">Projects</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num">MEng</div>
+        <div class="stat-label">+ MS AI · NTU</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="section-header">
+      <span class="section-num">01</span>
+      <h2 class="section-title">About</h2>
+    </div>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>
+          In 2019 I set out to become a mechanical engineer — then programming stole my heart.
+          What started as curiosity about code became a full pivot into AI, driven by the belief
+          that the most interesting engineering problems today sit at the intersection of
+          mathematics, computation, and real-world data.
+        </p>
+        <p>
+          I completed my Master's in Artificial Intelligence at Nanyang Technological University
+          in Singapore (2023–24), where my thesis explored how large language models can power
+          next-generation recommendation systems. Before that, I spent six months at Amazon India
+          as a Business Research Analyst, bridging data analysis with business strategy.
+        </p>
+        <p>
+          Today I'm a Data Scientist at Tesco, working on ML systems that operate at retail scale.
+          Outside of work you'll find me reading, cooking something experimental, chasing an
+          adrenaline rush, or dancing.
+        </p>
+      </div>
+      <div class="interests">
+        <h3>Research interests</h3>
+        <ul class="interest-list">
+          <li>Natural Language Processing</li>
+          <li>Generative Models &amp; GANs</li>
+          <li>Computer Vision</li>
+          <li>Reinforcement Learning</li>
+          <li>Recommendation Systems</li>
+          <li>Unsupervised Domain Adaptation</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- BACKGROUND -->
+  <section id="background">
+    <div class="section-header">
+      <span class="section-num">02</span>
+      <h2 class="section-title">Background</h2>
+    </div>
+    <div class="timeline">
+
+      <div class="timeline-item">
+        <div class="timeline-date">Aug 2024 — Present</div>
+        <div class="timeline-content">
+          <div class="timeline-org">Tesco</div>
+          <div class="timeline-role">Data Scientist</div>
+          <p class="timeline-desc">
+            MoE text classification: Implemented a Mixture of Experts architecture for hierarchical text classification — 97% accuracy on noisy datasets, cutting misclassification by 17% vs manual classification.
+            Graph personalization engine: Built a graph-based personalization engine using multi-relational customer trajectory modelling, projected to surface £45M in incremental revenue in 2026.
+            Fraud detection pipeline: Led end-to-end design and deployment of a fraud detection automation pipeline, achieving 80% reduction in manual case review.s
+          </p>
+          <span class="timeline-tag">NLP</span>
+          <span class="timeline-tag">ML Deployment</span>
+          <span class="timeline-tag">Python</span>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-date">2023 — 2024</div>
+        <div class="timeline-content">
+          <div class="timeline-org">Nanyang Technological University · Singapore</div>
+          <div class="timeline-role">MS in Artificial Intelligence</div>
+          <p class="timeline-desc">
+            Focused on NLP, generative models, and recommendation systems. Thesis:
+            <em>Next Point-of-Interest Recommendation using Large Language Models</em> —
+            combining GETNext with LLM-generated semantic embeddings for personalised POI prediction.
+          </p>
+          <span class="timeline-tag">Research</span>
+          <span class="timeline-tag">LLMs</span>
+          <span class="timeline-tag">Singapore</span>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-date">Jan — Jun 2023</div>
+        <div class="timeline-content">
+          <div class="timeline-org">Amazon India</div>
+          <div class="timeline-role">Business Research Analyst Intern</div>
+          <p class="timeline-desc">
+            Conducted data-driven research to surface insights supporting business strategy.
+            Collaborated cross-functionally to translate analytical findings into
+            actionable recommendations.
+            <!-- ✏️ Add specifics: team, datasets, outcomes if possible -->
+          </p>
+          <span class="timeline-tag">Analytics</span>
+          <span class="timeline-tag">Business Research</span>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-date">2019 — 2023</div>
+        <div class="timeline-content">
+          <div class="timeline-org">Undergraduate — Mechanical Engineering</div>
+          <div class="timeline-role">Bachelor of Engineering</div>
+          <p class="timeline-desc">
+            Engineering fundamentals shaped how I think about systems, constraints, and
+            optimisation — skills that transferred naturally to machine learning. Published
+            two IEEE papers during this period.
+          </p>
+          <span class="timeline-tag">IEEE Publications × 2</span>
+          <span class="timeline-tag">Research</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- EXPERTISE -->
+  <section id="expertise">
+    <div class="section-header">
+      <span class="section-num">03</span>
+      <h2 class="section-title">Expertise</h2>
+    </div>
+    <div class="skills-layout">
+      <div class="skill-group">
+        <h3>AI / ML domains</h3>
+        <div class="skill-pills">
+          <span class="pill accent">NLP</span>
+          <span class="pill accent">Generative Models</span>
+          <span class="pill">Computer Vision</span>
+          <span class="pill">Reinforcement Learning</span>
+          <span class="pill">Unsupervised Domain Adaptation</span>
+          <span class="pill">Recommendation Systems</span>
+          <span class="pill">Statistical Modelling</span>
+          <span class="pill">Deep Learning</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h3>Tools &amp; technologies</h3>
+        <div class="skill-pills">
+          <span class="pill accent">Python</span>
+          <span class="pill">PyTorch</span>
+          <span class="pill">HuggingFace</span>
+          <span class="pill">Sentence-Transformers</span>
+          <span class="pill">Scikit-learn</span>
+          <span class="pill">SQL</span>
+          <span class="pill">Pandas / NumPy</span>
+          <span class="pill">Git</span>
+          <span class="pill">Agile</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORK -->
+  <section id="work">
+    <div class="section-header">
+      <span class="section-num">04</span>
+      <h2 class="section-title">Work</h2>
+    </div>
+    <div class="projects-grid">
+
+      <!-- Project 1: Transplant Logistics -->
+      <a class="project-card" href="https://github.com/ThanyaRamanathan/transplant-logistics-env" target="_blank">
+        <img class="project-img" src="5.png" alt="Transplay Logistics">
+        <div class="project-body">
+          <div class="project-type">Project · Reinforcement Learning · Healthcare AI</div>
+          <h3 class="project-title">Transplant Logistics — NHS UK OpenEnv</h3>
+          <p class="project-desc">
+            Full RL environment simulating national organ allocation decisions, calibrated to 
+            real NHS Blood and Transplant 2022/23 data. An LLM agent acts as transplant 
+            coordinator — enforcing blood compatibility, HLA typing, cold ischaemia limits, 
+            and clinical urgency across 15 UK transplant centres. LLaMA-3.3-70b scores 
+            <strong>0.917 mean</strong> vs 0.539 GPT-4o-mini baseline. Supports GRPO fine-tuning via TRL.
+          </p>
+          <div class="project-tags">
+            <span class="project-tag">Reinforcement Learning</span>
+            <span class="project-tag">LLM Agent</span>
+            <span class="project-tag">GRPO</span>
+            <span class="project-tag">FastAPI</span>
+            <span class="project-tag">Healthcare</span>
+            <span class="project-tag">OpenEnv</span>
+          </div>
+          <span class="project-link">
+            View on GitHub
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </span>
+        </div>
+      </a>
+
+      <!-- Project 2: RNA 3D Folding -->
+      <a class="project-card" href="https://github.com/ThanyaRamanathan/stanford-rna-3d-folding-part2" target="_blank">
+        <img class="project-img" src="6.png" alt="Stanford RNA 3D Folding">
+        <div class="project-body">
+          <div class="project-type">Kaggle Competition · Structural Biology · 2026</div>
+          <h3 class="project-title">Stanford RNA 3D Folding — Part 2</h3>
+          <p class="project-desc">
+            Predicted RNA 3D structure from sequence using Template-Based Modelling (TBM) 
+            combined with NVIDIA's RNAPro — a 500M-parameter diffusion model built on 
+            AlphaFold 3's architecture with a RNA-specific template embedder and 
+            RibonanzaNet2 as a frozen sequence encoder. Achieved public leaderboard score 
+            of <strong>0.489</strong> (vs 0.554 oracle baseline), with detailed ablations documenting 
+            that template quality is the single most critical pipeline variable.
+          </p>
+          <div class="project-tags">
+            <span class="project-tag">Diffusion Models</span>
+            <span class="project-tag">Structural Biology</span>
+            <span class="project-tag">RNAPro</span>
+            <span class="project-tag">Template-Based Modelling</span>
+            <span class="project-tag">Kaggle</span>
+          </div>
+          <span class="project-link">
+            View on GitHub
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </span>
+        </div>
+      </a>
+
+      <!-- Project 3: Image Translation & UDA -->
+      <a class="project-card" href="https://github.com/ThanyaRamanathan/Image-Translation-and-UDA" target="_blank">
+        <img class="project-img" src="2.png" alt="Image Translation and UDA project" onerror="this.style.background='#f0e8e2';this.removeAttribute('src')">
+        <div class="project-body">
+          <div class="project-type">Project · Computer Vision</div>
+          <h3 class="project-title">Image Translation &amp; Unsupervised Domain Adaptation</h3>
+          <p class="project-desc">
+            Used GANs to bridge the domain gap between labelled source datasets and 
+            unlabelled target domains — enabling models trained on synthetic data to 
+            generalise to real-world scenarios without costly target-domain annotations.
+          </p>
+          <div class="project-tags">
+            <span class="project-tag">GANs</span>
+            <span class="project-tag">Computer Vision</span>
+            <span class="project-tag">Domain Adaptation</span>
+            <span class="project-tag">PyTorch</span>
+          </div>
+          <span class="project-link">
+            View on GitHub
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </span>
+        </div>
+      </a>
+
+      <!-- Project 4: Solar Irradiance (IEEE) -->
+      <a class="project-card" href="https://ieeexplore.ieee.org/abstract/document/10051277" target="_blank">
+        <img class="project-img" src="3.png" alt="Solar Irradiance Prediction paper" onerror="this.style.background='#f0e8e2';this.removeAttribute('src')">
+        <div class="project-body">
+          <div class="project-type">IEEE Publication · Research</div>
+          <h3 class="project-title">Solar Irradiance Prediction</h3>
+          <p class="project-desc">
+            Benchmarked SVM and LSTM architectures for solar irradiance prediction at specific 
+            geographic coordinates using NASA POWER historical data. Compared model accuracy 
+            across latitudinal and longitudinal positions.
+          </p>
+          <div class="project-tags">
+            <span class="project-tag">LSTM</span>
+            <span class="project-tag">SVM</span>
+            <span class="project-tag">Time Series</span>
+            <span class="project-tag">IEEE</span>
+          </div>
+          <span class="project-link">
+            Read on IEEE
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </span>
+        </div>
+      </a>
+
+      <!-- Project 5: MDMTSP (IEEE) -->
+      <a class="project-card" href="https://ieeexplore.ieee.org/abstract/document/10250669" target="_blank">
+        <img class="project-img" src="4.jpg" alt="MDMTSP paper" onerror="this.style.background='#f0e8e2';this.removeAttribute('src')">
+        <div class="project-body">
+          <div class="project-type">IEEE Publication · Bachelor's Thesis</div>
+          <h3 class="project-title">Multi-Depot MTSP via Genetic Algorithm &amp; RL</h3>
+          <p class="project-desc">
+            Tackled the NP-hard closed-path multi-depot travelling salesman problem with a 
+            genetic algorithm (elitist selection, 2-opt mutation, OX crossover), further 
+            refined using reinforcement learning to converge on feasible, optimised solutions.
+          </p>
+          <div class="project-tags">
+            <span class="project-tag">Genetic Algorithm</span>
+            <span class="project-tag">Reinforcement Learning</span>
+            <span class="project-tag">Optimisation</span>
+            <span class="project-tag">IEEE</span>
+          </div>
+          <span class="project-link">
+            Read on IEEE
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </span>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="section-header">
+      <span class="section-num">05</span>
+      <h2 class="section-title">Contact</h2>
+    </div>
+    <div class="contact-layout">
+      <div>
+        <p class="contact-intro">Let's build something <em>interesting</em> together.</p>
+        <p class="contact-sub">
+          Open to data science roles, research collaborations, and interesting conversations
+          about AI. Based in Bengaluru — open to remote &amp; relocation.
+        </p>
+        <a href="mailto:thanya.ramanathan@gmail.com" class="btn btn-primary">
+          Send a message ↗
+        </a>
+      </div>
+      <div>
+        <ul class="contact-links">
+          <li>
+            <a href="https://www.linkedin.com/in/thanya-ramanathan/" target="_blank">
+              <span>
+                <span class="contact-label">LinkedIn</span><br>
+                Thanya Ramanathan
+              </span>
+              <span>↗</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://github.com/ThanyaRamanathan" target="_blank">
+              <span>
+                <span class="contact-label">GitHub</span><br>
+                ThanyaRamanathan
+              </span>
+              <span>↗</span>
+            </a>
+          </li>
+          <li>
+            <a href="mailto:thanya.ramanathan@gmail.com">
+              <span>
+                <span class="contact-label">Email</span><br>
+                thanya.ramanathan@gmail.com
+              </span>
+              <span>↗</span>
+            </a>
+          </li>
+          <li>
+            <a href="tel:+919535005672">
+              <span>
+                <span class="contact-label">Phone</span><br>
+                +91 95350 05672
+              </span>
+              <span>↗</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://drive.google.com/file/d/1SC3inpwRWXU9mpKlWTAOZ647MQekJyFM/view?usp=sharing" target="_blank">
+              <span>
+                <span class="contact-label">Résumé</span><br>
+                Download PDF
+              </span>
+              <span>↗</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p class="footer-note">© 2025 Thanya Ramanathan</p>
+    <p class="footer-note">Bengaluru, India</p>
+  </footer>
+
+</div><!-- /container -->
+
+</body>
+</html>
